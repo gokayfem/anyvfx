@@ -218,6 +218,13 @@ class Limits(unittest.TestCase):
         got, dt = new.decode(small)
         self.assertEqual((len(got), dt), (3, 0.12))
 
+    def test_contact_sheet_cells_stay_bounded(self):
+        # a 16 x 4096 clip passes the pixel limits; its thumbnails must still fit the sheet's cells
+        for w, h in ((16, 4096), (4096, 16), (816, 816), (17, 16)):
+            tw, th = new.thumb_size(w, h, 390)
+            self.assertTrue(1 <= tw <= 390 and 1 <= th <= 390, (w, h, tw, th))
+        self.assertEqual(new.thumb_size(816, 816, 390), (390, 390))
+
 
 class Fetch(unittest.TestCase):
     def setUp(self):

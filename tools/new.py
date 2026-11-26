@@ -123,6 +123,12 @@ def decode(gif: Path):
     return frames, min(max(round(ms / 1000.0, 4), 0.001), 10.0)
 
 
+def thumb_size(w: int, h: int, cell: int):
+    """Size of a thumbnail that fits a cell x cell square whatever the frame's shape, at least 1 px a side."""
+    s = min(cell / w, cell / h)
+    return max(int(w * s), 1), max(int(h * s), 1)
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("folder", help="work folder to create or refresh")
@@ -168,8 +174,7 @@ def main() -> None:
 
     # ---- pictures ----
     cols = 4
-    tw = 1560 // cols
-    th = tw * H // W
+    tw, th = thumb_size(W, H, 1560 // cols)
     sheet = Image.new("RGB", (tw * cols, th * ((N + cols - 1) // cols)))
     for i, f in enumerate(frames):
         t = f.resize((tw, th), Image.LANCZOS)

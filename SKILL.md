@@ -23,7 +23,8 @@ library and the GLSL rules; this file is only about matching a clip.
 
 ```mermaid
 flowchart LR
-  A[new.py] --> B[What happens: a video model]
+  Z[A clip: yours, or generated] --> A[new.py]
+  A --> B[What happens: a video model]
   B --> C[Breakdown: layers, depth order, keys, materials]
   C --> D[Static scene, alone, on the calm frame]
   C --> F[Timeline: track.py + key tables]
@@ -44,6 +45,18 @@ All commands run from the repository root with the project's Python (`python` be
   not measured.
 - **Say what you looked at.** Stills cannot show shake, flow or flicker. If only stills were checked, say so.
 - **A review covers the files it was run on.** If the shader changed afterwards, the review is out of date.
+
+## Before step 0: the clip
+
+Any short looping GIF of an effect in a scene works. The example clips were generated: a keyframe per ability
+from an image model, then an image-to-GIF model. [`docs/CLIPS.md`](docs/CLIPS.md) records the prompt template,
+the settings and the gaps. Two things from there matter when you recreate a clip:
+
+- If you know the prompt a clip was generated from, read it: its action sentence names the shapes and their order,
+  and its style words say what kind of painted texture you will not be able to match. But **the clip is the
+  reference, not the prompt**: the animation step redesigns freely.
+- A clip that reads well as a shader has one effect, complete inside a square frame, a fixed camera, a quiet
+  background and a clear direction of force. If you are generating clips for this pipeline, ask for those.
 
 ## 0. Start (10 seconds)
 

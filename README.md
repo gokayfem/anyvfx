@@ -69,10 +69,21 @@ Then open the repository in your agent and ask:
 
 Look at each pass it publishes (`work/my-clip/compare.html`) and say what is wrong. That loop is the method.
 
+## Where the clips come from
+
+The pipeline starts one step before the GIF. The four example clips were generated, not filmed: a matrix of 256
+game abilities, one keyframe each from Seedream 5.5 Edit, then GPT Image 2.6 Flare Edit to turn a keyframe into a
+12-frame GIF. [`docs/CLIPS.md`](docs/CLIPS.md) has the prompt template, the lists it draws from, the settings,
+which prompt each example came from, and what is not on record (the animation step's inputs).
+[`docs/clip-batch.md`](docs/clip-batch.md) lists all 256 prompts. No generated media is stored there.
+
+You do not need any of it to use the tools: any GIF works.
+
 ## How the agent works
 
 [`SKILL.md`](SKILL.md) is the whole process, with every mistake the four examples made:
 
+0. (before the tools) a clip: yours, or generated as in [`docs/CLIPS.md`](docs/CLIPS.md);
 1. bootstrap: frames, timing, an exposure curve, what moves and what is static, rulers for reading positions;
 2. what happens, from watching the clip; where it happens, from the frames;
 3. a breakdown written before any code: layers, what each effect is made of, depth order, key tables;
@@ -117,6 +128,8 @@ examples/<name>/      one folder per clip
   source.gif, ref/    the reference clip and its frames    meta.json         timing and light-map region
   compare.gif         reference | shader                   compare.html      reference | live shader
   NOTES.md            what is measured, what is a stand-in, what still does not match
+docs/CLIPS.md         where the example clips come from: the generation prompts and settings (no media)
+docs/clip-batch.md    the 256 keyframe prompts of that batch
 docs/media/           README images
 tests/                checks that run without a GPU
 ```
@@ -146,7 +159,8 @@ clip you give them with Pillow's GIF reader, and download only when you pass an 
 ## Credits and licence
 
 Code, shaders and the example media are MIT, see [LICENSE](LICENSE). The reference clips are the author's own
-AI-generated loops; the `source.gif` files keep the content credentials (C2PA) they were made with. The bundled
+AI-generated loops ([how they were made](docs/CLIPS.md)); the `source.gif` files keep the content credentials
+(C2PA) they were made with. The bundled
 `shader.out.glsl` files contain functions inlined from
 [shader-skills](https://github.com/gokayfem/shader-skills) (MIT); its
 [CREDITS](https://github.com/gokayfem/shader-skills/blob/main/CREDITS.md) lists the sources those build on.
