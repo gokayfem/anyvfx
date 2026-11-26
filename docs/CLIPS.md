@@ -109,9 +109,11 @@ from the Stage A keyframes is inferred from their content and timing, not read f
 
 ## The four examples: candidate source prompts
 
-No request links a keyframe to a clip, because Stage B's inputs are missing. These are **candidates**: for each
-example, the keyframe from the batch whose image is closest to the clip's frames, checked against the clip's
-subject and setting. "Match" says how good that is. Treat them as probable, not as verified lineage.
+No request links a keyframe to a clip, because Stage B's inputs are missing. These are **candidates**, and they
+were not found by searching all 256 keyframes. Each was shortlisted by subject and setting from the prompt text,
+then its keyframe image was compared with the clip's frames. For 01, 03 and 04 one prompt was shortlisted; for 02
+the sixteen prompts staged in its setting were ranked. "Match" says how good the result is. Treat them as
+probable, not as verified lineage.
 
 | Example | Candidate ability | Action | Setting | Style | Camera | Match |
 |---|---|---|---|---|---|---|
