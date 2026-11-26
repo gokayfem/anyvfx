@@ -1,0 +1,20 @@
+# environments and caches
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+.DS_Store
+
+# your own clips
+work/
+
+# generated inside a work folder (rebuild with tools/new.py, tools/go.py, tools/finish.py)
+out/
+out_*/
+analysis/
+baseline/
+.build.glsl
+shader.gif
+live.mp4
+scene/shader.out.glsl

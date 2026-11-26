@@ -1,0 +1,11 @@
+* text=auto eol=lf
+
+*.gif binary
+*.png binary
+*.jpg binary
+*.mp4 binary
+
+*.glsl linguist-language=GLSL
+*.out.glsl linguist-generated
+lightmap.glsl linguist-generated
+compare.html linguist-generated
