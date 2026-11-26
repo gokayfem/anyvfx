@@ -1,8 +1,10 @@
 # Where the reference clips come from
 
-AnyVFX starts from a GIF. This page is the step before that: how the clips in [`examples/`](../examples) were made.
-It is here so the whole chain is on record, from a line of text to a shader. You do not need any of it to use the
-tools: `tools/new.py` takes any GIF.
+AnyVFX starts from a GIF. This page is the step before that: how clips like the ones in [`examples/`](../examples)
+are made. It separates two things. The **workflow** (ability matrix, keyframe, image-to-GIF) is what was run, and
+is what to repeat. The **lineage** of each example clip (which keyframe became which GIF) is not on record, and is
+only matched after the fact; see "The four examples". You do not need any of this to use the tools:
+`tools/new.py` takes any GIF.
 
 ```mermaid
 flowchart LR
@@ -12,8 +14,8 @@ flowchart LR
   D --> E[SKILL.md: clip to shader]
 ```
 
-Everything below was read back from the author's fal request history. Nothing here is a media file; the four
-example clips themselves are in `examples/*/source.gif`.
+The settings and prompts below were read back from the author's fal request history. Nothing here is a media
+file; the four example clips themselves are in `examples/*/source.gif`.
 
 ## Stage A: a keyframe per ability (Seedream 5.5 Edit)
 
@@ -105,12 +107,13 @@ The same day, before the batch, 32 requests on the same endpoint tried other ope
 that turned a keyframe into a clip are not on record, and they are not reproduced here. That the clips were made
 from the Stage A keyframes is inferred from their content and timing, not read from the requests.
 
-## The four examples
+## The four examples: candidate source prompts
 
-The keyframe prompt each example's clip corresponds to. "How sure" says how the pairing was made, since Stage B's
-inputs are missing.
+No request links a keyframe to a clip, because Stage B's inputs are missing. These are **candidates**: for each
+example, the keyframe from the batch whose image is closest to the clip's frames, checked against the clip's
+subject and setting. "Match" says how good that is. Treat them as probable, not as verified lineage.
 
-| Example | Ability | Action | Setting | Style | Camera | How sure |
+| Example | Candidate ability | Action | Setting | Style | Camera | Match |
 |---|---|---|---|---|---|---|
 | [`01-salt-flat-beam`](../examples/01-salt-flat-beam/NOTES.md) | **Harmonic Lift** (sound and rhythm) | Three standing waves stack vertically and raise a halo of floating grains between their crests. | a violet alien salt flat with distant flat mesas | cel-shaded arcade animation with hard two-tone shadows and minimal bloom | fixed high oblique view with strong ground separation | scene and subject match |
 | [`02-vortex-bay`](../examples/02-vortex-bay/NOTES.md) | **Final Rest** (sound and rhythm) | A broad ringing wave collapses toward a fixed point while stray oscillations damp one by one. | an abandoned navy-blue orbital hangar with spare amber floor insets | retro vector arcade rendering with bright contour lines and sparse granular decay | fixed high oblique view with strong ground separation | likely: closest of the 16 keyframes staged in this setting, by a small margin |

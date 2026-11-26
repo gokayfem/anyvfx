@@ -71,11 +71,16 @@ Look at each pass it publishes (`work/my-clip/compare.html`) and say what is wro
 
 ## Where the clips come from
 
-The pipeline starts one step before the GIF. The four example clips were generated, not filmed: a matrix of 256
-game abilities, one keyframe each from Seedream 5.5 Edit, then GPT Image 2.6 Flare Edit to turn a keyframe into a
-12-frame GIF. [`docs/CLIPS.md`](docs/CLIPS.md) has the prompt template, the lists it draws from, the settings,
-which prompt each example came from, and what is not on record (the animation step's inputs).
-[`docs/clip-batch.md`](docs/clip-batch.md) lists all 256 prompts. No generated media is stored there.
+The pipeline starts one step before the GIF. The four example clips were generated, not filmed. The workflow is: a
+matrix of 256 game abilities, one keyframe each from Seedream 5.5 Edit, then GPT Image 2.6 Flare Edit to turn a
+keyframe into a 12-frame GIF. [`docs/CLIPS.md`](docs/CLIPS.md) has the keyframe prompt template, the lists it
+draws from and the settings, and [`docs/clip-batch.md`](docs/clip-batch.md) lists all 256 prompts. No generated
+media is stored there.
+
+What is on record and what is not: the keyframe requests are, in full. The animation requests' inputs were not
+kept, so their prompt is missing and no request ties a particular keyframe to a particular clip. `docs/CLIPS.md`
+names a **candidate** keyframe prompt for each example, matched by comparing images, and says how good each match
+is.
 
 You do not need any of it to use the tools: any GIF works.
 
